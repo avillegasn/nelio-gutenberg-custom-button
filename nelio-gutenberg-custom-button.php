@@ -68,7 +68,7 @@ class NelioButton {
 	public function enqueue_block_editor_assets() {
 
 		wp_enqueue_script(
-			'nelio-blocks-gutenberg',
+			'nelio-gutenberg-custom-button',
 			untrailingslashit( plugin_dir_url( __FILE__ ) ) . '/dist/js/gutenberg.js',
 			[ 'wp-editor', 'wp-i18n', 'wp-element', 'wp-compose', 'wp-components' ],
 			'1.0.0',
