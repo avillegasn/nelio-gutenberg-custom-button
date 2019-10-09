@@ -1,39 +1,31 @@
 import ElementIcon from '../images/logo.svg';
 
-const { Fragment } = wp.element;
 const { __ } = window.wp.i18n;
 const { registerFormatType, unregisterFormatType } = window.wp.richText;
-const { RichTextToolbarButton } = window.wp.editor;
-
+const { RichTextToolbarButton } = window.wp.blockEditor;
 
 unregisterFormatType( 'nelio/button' );
 registerFormatType( 'nelio/button', {
-	title: __( 'Nelio', 'nelio-content' ),
+	title: __( 'Nelio', 'nelio' ),
 	tagName: 'span',
-	className: null,
-	edit({ value }) {
-		const onClick = () => doTheJob( value );
-
-		return (
-			<Fragment>
-				<RichTextToolbarButton
-					icon={ <ElementIcon /> }
-					title={ __( 'Nelio', 'nelio-content' ) }
-					onClick={ onClick }
-				/>
-			</Fragment>
-		);
-	}
-});
+	className: 'nelio',
+	edit: ( { value, onChange } ) => (
+		<RichTextToolbarButton
+			icon={ <ElementIcon /> }
+			title={ __( 'Nelio', 'nelio' ) }
+			onClick={ () => onChange( doTheJob( value ) ) }
+		/>
+	),
+} );
 
 function doTheJob( value ) {
 
-	let selectedText = value.text.substring( value.start, value.end );
+	const selectedText = value.text.substring( value.start, value.end );
 	if ( 0 === selectedText.length ) {
 		return;
-    }//end if
+	}//end if
 
-    // Do things with the selected text here...
-    console.log( selectedText );
+	// Do things with the selected text here...
+	console.log( selectedText );
 
 }//end openDialogToCreateAMessage()

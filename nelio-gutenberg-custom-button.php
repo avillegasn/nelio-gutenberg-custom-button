@@ -54,14 +54,8 @@ class NelioButton {
 
         add_action( 'admin_init', array( $this, 'admin_init' ) );
 
-        // include blocks.
-        // work only if Gutenberg available.
-        if ( function_exists( 'register_block_type' ) ) {
-
-			// we need to enqueue the main script earlier to let 3rd-party plugins add custom styles support.
-            add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), 9 );
-
-		}//end if
+        // we need to enqueue the main script earlier to let 3rd-party plugins add custom styles support.
+        add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), 9 );
 
 	}
 
@@ -70,13 +64,13 @@ class NelioButton {
 		wp_enqueue_script(
 			'nelio-gutenberg-custom-button',
 			untrailingslashit( plugin_dir_url( __FILE__ ) ) . '/dist/js/gutenberg.js',
-			[ 'wp-editor', 'wp-i18n', 'wp-element', 'wp-compose', 'wp-components' ],
-			'1.0.0',
+			[],
+			'1.0.3',
 			true
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( 'nelio-gutenberg', 'nelio' );
+			wp_set_script_translations( 'nelio-gutenberg-custom-button', 'nelio' );
 		}//end if
 
 	}
