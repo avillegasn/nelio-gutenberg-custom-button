@@ -41,7 +41,7 @@
     "file-loader": "^1.1.11",
     "gist-embed": "^2.6.0",
     "imagemin-webpack-plugin": "^1.6.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^9.0.0",
     "postcss-loader": "^2.1.6",
     "regenerator-runtime": "^0.12.1",
     "sass-loader": "^6.0.7",
